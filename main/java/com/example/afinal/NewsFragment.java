@@ -60,10 +60,10 @@ public class NewsFragment extends Fragment {
                         for(int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
-                                String str = "Total Cases: " + obj.getString("total_cases")
-                                            + "\n\t\t\t\t\tTotal Deaths: " + obj.getString("total_deaths")
-                                            + "\n\t\t\t\t\t\t\t\t\t\tTotal Recovered: " + obj.getString("total_recovered")
-                                            + "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t( " + obj.getString("last_update").substring(0,10) + " " + obj.getString("last_update").substring(11,19) + " )";
+                                String str = "Total Number of Cases Cases: " + obj.getString("total_cases")
+                                            + "\nTotal Recovered: " + obj.getString("total_recovered")
+                                            + "\nTotal Deaths: " + obj.getString("total_deaths")
+                                            + "\n as of " + obj.getString("last_update").substring(0,10) + " " + obj.getString("last_update").substring(11,19);
                                 list.add(str);
                             } catch (JSONException e) {
                                 e.printStackTrace();

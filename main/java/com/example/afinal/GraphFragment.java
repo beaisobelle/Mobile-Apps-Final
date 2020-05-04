@@ -81,12 +81,11 @@ public class GraphFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //volley request urls
         url = "https://covid19-api.org/api/status";
         urlHistory = "https://covid19-api.org/api/timeline/";
         urlPrediction = "https://covid19-api.org/api/prediction/";
 
-        countries = new String[] {"US", "ES", "IT", "GB", "FR"};
+        countries = new String[] {"US", "PH", "JP", "CA", "CN"};
 
         pieChart = view.findViewById(R.id.piechart);
         pieChart.setUsePercentValues(false);
@@ -108,7 +107,7 @@ public class GraphFragment extends Fragment {
         barChart = view.findViewById(R.id.barchart);
         xLabelsBar = new String[15];
         xAxisBar = barChart.getXAxis();
-        barColor = new int[] {Color.rgb(140,165,191), Color.rgb(187,156,128), Color.rgb(211,205,200)};
+        barColor = new int[] {Color.rgb(255,229,231), Color.rgb(223,237,250), Color.rgb(239,222,250)};
 
         Cache cache = new DiskBasedCache(getActivity().getCacheDir(), 1024 * 1024);
         Network network = new BasicNetwork(new HurlStack());
@@ -155,24 +154,23 @@ public class GraphFragment extends Fragment {
                         pieDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
                         PieData pieData = new PieData(pieDataSet);
                         pieChart.setData(pieData);
-                        pieChart.getDescription().setText("Total Reported Cases of COVID-19");
-                        pieChart.getDescription().setTextColor(Color.rgb(161, 161, 161));
+                        pieChart.getDescription().setText("Cases By Country displayed on a pie chart");
+                        pieChart.getDescription().setTextColor(Color.rgb(255, 255, 255));
                         pieChart.getLegend().setEnabled(false);
-                        pieChart.setCenterText("COVID-19 Cases");
+                        pieChart.setCenterText("Cases By Country");
                         pieChart.setCenterTextSize(20f);
 
                         barDataSet = new BarDataSet(barlist, "");
                         barDataSet.setStackLabels(new String[] {"Unresolved Cases", "Recovered", "Deaths"});
                         barDataSet.setColors(barColor);
                         xAxisBar.setValueFormatter(new IndexAxisValueFormatter(xLabelsBar));
-                        xAxisBar.setTextColor(Color.rgb(161, 161, 161));
+                        xAxisBar.setTextColor(Color.rgb(255, 255, 255));
                         BarData barData = new BarData(barDataSet);
                         barChart.setData(barData);
                         barChart.getAxisLeft().setEnabled(false);
-                        barChart.getAxisRight().setTextColor(Color.rgb(161, 161, 161));
-                        barChart.getDescription().setText("Recoverey to Death Comparison per Total Number of Cases");
-                        barChart.getDescription().setTextColor(Color.rgb(161, 161, 161));
-                        barChart.getLegend().setTextColor(Color.rgb(161, 161, 161));
+                        barChart.getAxisRight().setTextColor(Color.rgb(255, 255, 255));
+                        //barChart.getDescription().setTextColor(Color.rgb(255, 255, 255));
+                        barChart.getLegend().setTextColor(Color.rgb(255, 255, 255));
                     }
                 }, new Response.ErrorListener() {
 
@@ -207,7 +205,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSet[0] = new LineDataSet(historylist[0], countries[0]);
-                        lineDataSet[0].setColors(ColorTemplate.rgb("#f54260"));
+                        lineDataSet[0].setColors(ColorTemplate.rgb("#bdd0c4"));
                         dataSets.add(lineDataSet[0]);
 
 
@@ -239,7 +237,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSet[1] = new LineDataSet(historylist[1], countries[1]);
-                        lineDataSet[1].setColors(ColorTemplate.rgb("#f56260"));
+                        lineDataSet[1].setColors(ColorTemplate.rgb("#9ab7d3"));
                         dataSets.add(lineDataSet[1]);
 
 
@@ -273,7 +271,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSet[2] = new LineDataSet(historylist[2], countries[2]);
-                        lineDataSet[2].setColors(ColorTemplate.rgb("#f56290"));
+                        lineDataSet[2].setColors(ColorTemplate.rgb("#f5d2d3"));
                         dataSets.add(lineDataSet[2]);
 
 
@@ -307,7 +305,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSet[3] = new LineDataSet(historylist[3], countries[3]);
-                        lineDataSet[3].setColors(ColorTemplate.rgb("#f76290"));
+                        lineDataSet[3].setColors(ColorTemplate.rgb("#f7e1d3"));
                         dataSets.add(lineDataSet[3]);
 
 
@@ -341,20 +339,18 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSet[4] = new LineDataSet(historylist[4], countries[4]);
-                        lineDataSet[4].setColors(ColorTemplate.rgb("#f76200"));
+                        lineDataSet[4].setColors(ColorTemplate.rgb("#dfccf1"));
                         dataSets.add(lineDataSet[4]);
 
-
-                        //make the chart herer
                         data = new LineData(dataSets);
                         data.setValueTextColor(Color.WHITE);
                         historyLine.setData(data);
                         xAxis.setValueFormatter(new IndexAxisValueFormatter(xLabels));
-                        xAxis.setTextColor(Color.rgb(161, 161, 161));
-                        historyLine.getDescription().setText("Total Reported Cases From the Past 5 Days");
-                        historyLine.getDescription().setTextColor(Color.rgb(161, 161, 161));
-                        historyLine.getLegend().setTextColor(Color.rgb(161, 161, 161));
-                        historyLine.getAxisLeft().setTextColor(Color.rgb(161, 161, 161));
+                        xAxis.setTextColor(Color.rgb(225, 225, 225));
+                        historyLine.getDescription().setText("Recent Reported Cases");
+                        historyLine.getDescription().setTextColor(Color.rgb(225, 225, 225));
+                        historyLine.getLegend().setTextColor(Color.rgb(225, 225, 225));
+                        historyLine.getAxisLeft().setTextColor(Color.rgb(225, 225, 225));
                         historyLine.getAxisRight().setEnabled(false);
 
                     }
@@ -389,7 +385,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSetPrediction[0] = new LineDataSet(predictionlist[0], countries[0]);
-                        lineDataSetPrediction[0].setColors(ColorTemplate.rgb("#f56290"));
+                        lineDataSetPrediction[0].setColors(ColorTemplate.rgb("#df574f"));
                         dataSetsPrediction.add(lineDataSetPrediction[0]);
 
                     }
@@ -420,7 +416,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSetPrediction[1] = new LineDataSet(predictionlist[1], countries[1]);
-                        lineDataSetPrediction[1].setColors(ColorTemplate.rgb("#f56260"));
+                        lineDataSetPrediction[1].setColors(ColorTemplate.rgb("#f2d554"));
                         dataSetsPrediction.add(lineDataSetPrediction[1]);
 
 
@@ -454,7 +450,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSetPrediction[2] = new LineDataSet(predictionlist[2], countries[2]);
-                        lineDataSetPrediction[2].setColors(ColorTemplate.rgb("#f56290"));
+                        lineDataSetPrediction[2].setColors(ColorTemplate.rgb("#3dc77f"));
                         dataSetsPrediction.add(lineDataSetPrediction[2]);
 
 
@@ -488,7 +484,7 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSetPrediction[3] = new LineDataSet(predictionlist[3], countries[3]);
-                        lineDataSetPrediction[3].setColors(ColorTemplate.rgb("#f76290"));
+                        lineDataSetPrediction[3].setColors(ColorTemplate.rgb("#5666bf"));
                         dataSetsPrediction.add(lineDataSetPrediction[3]);
 
 
@@ -522,20 +518,18 @@ public class GraphFragment extends Fragment {
                         }
 
                         lineDataSetPrediction[4] = new LineDataSet(predictionlist[4], countries[4]);
-                        lineDataSetPrediction[4].setColors(ColorTemplate.rgb("#f76200"));
+                        lineDataSetPrediction[4].setColors(ColorTemplate.rgb("#b19cd9"));
                         dataSetsPrediction.add(lineDataSetPrediction[4]);
 
-
-                        //make the chart herer
                         dataPrediction = new LineData(dataSetsPrediction);
                         dataPrediction.setValueTextColor(Color.WHITE);
                         predictionLine.setData(dataPrediction);
                         xAxis1.setValueFormatter(new IndexAxisValueFormatter(xLabelsPrediction));
-                        xAxis1.setTextColor(Color.rgb(161, 161, 161));
-                        predictionLine.getDescription().setText("Predicted COVID-19 Cases for the Next 5 Days");
-                        predictionLine.getDescription().setTextColor(Color.rgb(161, 161, 161));
-                        predictionLine.getLegend().setTextColor(Color.rgb(161, 161, 161));
-                        predictionLine.getAxisLeft().setTextColor(Color.rgb(161, 161, 161));
+                        xAxis1.setTextColor(Color.rgb(225, 225, 225));
+                        predictionLine.getDescription().setText("Predicted COVID-19 Cases");
+                        predictionLine.getDescription().setTextColor(Color.rgb(225, 225, 225));
+                        predictionLine.getLegend().setTextColor(Color.rgb(225, 225, 225));
+                        predictionLine.getAxisLeft().setTextColor(Color.rgb(225, 225, 225));
                         predictionLine.getAxisRight().setEnabled(false);
 
                     }

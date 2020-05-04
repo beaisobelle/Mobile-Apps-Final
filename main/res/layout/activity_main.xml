@@ -52,7 +52,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Username"
-        android:text="admin"
         android:background="#D3D3D3"
         android:inputType="textPersonName"
         android:textColorHint="#686868"
@@ -69,7 +68,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
-        android:text="admin"
         android:background="#D3D3D3"
         android:inputType="textWebPassword"
         android:textColorHint="#686868"
@@ -92,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.128" />
 
-    <Button
+    <!--<Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,7 +100,7 @@
         app:layout_constraintHorizontal_bias="0.600"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintVertical_bias="0.128" />-->
 
     <TextView
         android:id="@+id/info"

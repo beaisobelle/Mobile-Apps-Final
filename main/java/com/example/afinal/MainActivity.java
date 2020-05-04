@@ -79,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
         if((userName.equals("admin")) && (userPassoword.equals("admin"))) {
             Intent intent  = new Intent(this, MainApp.class);
             startActivity(intent);
-        } else {
+        }
+        else if ((userName.equals("Bea")) && (userPassoword.equals("bmontilla2015"))) {
+            Intent intent  = new Intent(this, MainApp.class);
+            startActivity(intent);
+        }
+        else {
             count--;
             info.setText("Wrong credentials, please try again\nNumber of Attempts Remaining: " + String.valueOf(count));
             if(count == 0) {

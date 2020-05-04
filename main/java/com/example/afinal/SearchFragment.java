@@ -38,7 +38,7 @@ public class SearchFragment extends Fragment {
 
     DatabaseHelper mDatabaseHelper;
     private Button btnAdd, btnSearch;
-    private EditText region;
+    private EditText country;
     private ListView list;
     public static final String EXTRA_MESSAGE = "com.example.afinal.MESSAGE";
 
@@ -48,7 +48,6 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         
 
@@ -60,7 +59,7 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        region = view.findViewById(R.id.region);
+        country = view.findViewById(R.id.region);
         btnAdd = view.findViewById(R.id.save);
         btnSearch = view.findViewById(R.id.search);
         mDatabaseHelper = new DatabaseHelper(getContext());
@@ -101,9 +100,9 @@ public class SearchFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newEntry = region.getText().toString();
+                String newEntry = country.getText().toString();
 
-                if(region.length() != 0) {
+                if(country.length() != 0) {
                     SM.sendData(newEntry);
                 } else {
                     toastMessage("Error: no entry");
@@ -111,24 +110,19 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        //new entry
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newEntry = region.getText().toString();
+                String newEntry = country.getText().toString();
 
-                if(region.length() != 0) {
+                if(country.length() != 0) {
                     AddData(newEntry);
                 } else {
                     toastMessage("Error: no entry");
                 }
-
-                //String toSpeak = "Look up" + region;
-                //t2.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 
-        //view saved entries
         list = view.findViewById(R.id.favorites);
         populateListView();
 
@@ -140,10 +134,10 @@ public class SearchFragment extends Fragment {
         boolean insertData = mDatabaseHelper.addData(newEntry);
 
         if (insertData) {
-            toastMessage("Region Saved");
+            toastMessage("Entry Saved");
             populateListView();
         } else {
-            toastMessage("Error saving region, please try again");
+            toastMessage("Error while saving entry. Please try again");
         }
     }
 
@@ -152,7 +146,6 @@ public class SearchFragment extends Fragment {
     }
 
     private void populateListView() {
-        //get data and append to list
         Cursor regions = mDatabaseHelper.getData();
         ArrayList<String> listCity = new ArrayList<>();
         while(regions.moveToNext()) {
