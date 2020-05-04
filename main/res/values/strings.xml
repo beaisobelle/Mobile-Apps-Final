@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">final</string>
+    <string name="tab_search">Search Region</string>
+    <string name="tab_stats">Region Stats</string>
+    <string name="tab_graph">COVID-19 Graphs</string>
+    <string name="tab_news">Live Updates</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

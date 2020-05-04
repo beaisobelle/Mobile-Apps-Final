@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GraphFragment">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:textSize="36sp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Reported Cases Comparison"></TextView>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/piechart"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"></com.github.mikephil.charting.charts.PieChart>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:textSize="36sp"
+                android:fontFamily="sans-serif-thin"
+                android:text="COVID-19 Timeline"></TextView>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/historychart"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="100dp"
+                android:layout_height="600dp"></com.github.mikephil.charting.charts.LineChart>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:textSize="36sp"
+                android:fontFamily="sans-serif-thin"
+                android:text="COVID-19 Predicted Cases"></TextView>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/predictionchart"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="100dp"
+                android:layout_height="600dp"></com.github.mikephil.charting.charts.LineChart>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:textSize="36sp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Recoveries and Deaths Per Total Cases"></TextView>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"></com.github.mikephil.charting.charts.BarChart>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</FrameLayout>
+
+
+
